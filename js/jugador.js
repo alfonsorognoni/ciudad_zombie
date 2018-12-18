@@ -27,9 +27,7 @@ var Jugador = {
     }
     this.sprite = imagen;
   },
-  perderVidas: function (contidadVidas) {
-    this.vidas -= contidadVidas;
-    console.log(this.vidas);
-    
+  perderVidas: function (cantidadVidas) {
+    this.vidas -= cantidadVidas;
   }
 }

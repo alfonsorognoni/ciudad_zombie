@@ -29,13 +29,13 @@ var Juego = {
     new Obstaculo('imagenes/valla_vertical.png', 480, 470, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 480, 440, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 180, 455, 30, 30, 1),
-    new Obstaculo('imagenes/auto_verde_abajo.png', 180, 235, 15, 30, 1),
-    new Obstaculo('imagenes/auto_verde_abajo.png', 865, 380, 15, 30, 1),
-    new Obstaculo('imagenes/auto_verde_derecha.png', 380, 480, 30, 15, 1),
-    new Obstaculo('imagenes/bache.png', 300, 480, 30, 30, 1),
-    new Obstaculo('imagenes/bache.png', 810, 410, 30, 30, 1),
-    new Obstaculo('imagenes/bache.png', 180, 280, 30, 30, 1),
-    new Obstaculo('imagenes/bache.png', 510, 130, 30, 30, 1),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 180, 235, 15, 30, .5),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 865, 380, 15, 30, .5),
+    new Obstaculo('imagenes/auto_verde_derecha.png', 380, 480, 30, 15, .5),
+    new Obstaculo('imagenes/bache.png', 300, 480, 30, 30, 2),
+    new Obstaculo('imagenes/bache.png', 810, 410, 30, 30, 2),
+    new Obstaculo('imagenes/bache.png', 180, 280, 30, 30, 2),
+    new Obstaculo('imagenes/bache.png', 510, 130, 30, 30, 2),
 
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
@@ -185,6 +185,9 @@ Juego.dibujar = function() {
     var x = tamanio * i
     Dibujante.dibujarRectangulo('red', x, 0, tamanio, 8);
   }
+
+  // marcar llegada
+  Dibujante.dibujarRectangulo('green', 760, 556, 125, 8);
 };
 
 
@@ -222,7 +225,7 @@ Juego.chequearColisiones = function(x, y) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
 
       /*COMPLETAR, obstaculo debe chocar al jugador*/
-
+      obstaculo.choca(this.jugador);
       puedeMoverse = false
     }
   }, this)
