@@ -62,6 +62,11 @@ var Juego = {
     new ZombieConductor('imagenes/tren_horizontal.png', 400, 322, 90, 30, 5, {desdeX: 0, hastaX: 860, desdeY: 322, hastaY: 322}, 'h'),
     new ZombieConductor('imagenes/tren_vertical.png', 644, 0, 30, 90, 5, {desdeX: 644, hastaX: 644, desdeY: 0, hastaY: 500}, 'v'),
     new ZombieConductor('imagenes/tren_vertical.png', 678, 0, 30, 90, 9, {desdeX: 678, hastaX: 678, desdeY: 0, hastaY: 500}, 'v'),
+    new ZombieCaminante('imagenes/zombie1.png', 778, 40, 10, 10, 2, {desdeX: 778, hastaX: 961, desdeY: 90, hastaY: 170}),
+    new ZombieCaminante('imagenes/zombie2.png', 278, 300, 10, 10, 2, {desdeX: 278, hastaX: 678, desdeY: 300, hastaY: 500}),
+    new ZombieCaminante('imagenes/zombie3.png', 178, 250, 10, 10, 3, {desdeX: 178, hastaX: 678, desdeY: 250, hastaY: 500}),
+    new ZombieCaminante('imagenes/zombie4.png', 778, 400, 10, 10, 4, {desdeX: 778, hastaX: 878, desdeY: 400, hastaY: 480}),
+    new ZombieCaminante('imagenes/zombie1.png', 78, 130, 10, 10, 5, {desdeX: 78, hastaX: 577, desdeY: 130, hastaY: 350}),
   ]
 
 }
@@ -185,7 +190,7 @@ Juego.dibujar = function() {
   var tamanio = this.anchoCanvas / this.vidasInicial;
   Dibujante.dibujarRectangulo('white', 0, 0, this.anchoCanvas, 8);
   for (var i = 0; i < this.jugador.vidas; i++) {
-    var x = tamanio * i
+    var x = tamanio * i 
     Dibujante.dibujarRectangulo('red', x, 0, tamanio, 8);
   }
 
@@ -215,9 +220,11 @@ Juego.calcularAtaques = function() {
     if (this.intersecan(enemigo, this.jugador, this.jugador.x, this.jugador.y)) {
       /* Si el enemigo colisiona debe empezar su ataque
       COMPLETAR */
+      enemigo.comenzarAtaque(this.jugador);
     } else {
       /* Sino, debe dejar de atacar
       COMPLETAR */
+      enemigo.dejarDeAtacar();
     }
   }, this);
 };
